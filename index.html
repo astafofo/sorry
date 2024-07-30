@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm Sorry</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-background {
+      background: rgb(255, 208, 229);
+      background: linear-gradient(180deg, rgba(255, 208, 229, 1) 0%, rgba(255, 232, 242, 1) 36%, rgba(255, 255, 255, 1) 100%);
+    }
+
+    .bounce2 {
+      animation: bounce2 2s ease infinite;
+    }
+
+    @keyframes bounce2 {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+
+    #gifImage {
+      display: none; /* Initially hidden */
+      margin-top: 20px;
+      max-width: 100%; /* Responsive size */
+      height: auto;
+    }
+  </style>
+</head>
+<body class="gradient-background">
+  <div class="flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">I'm sorry for not being able to speak :(</h2>
+      <div class="flex gap-4 pt-5 items-center" id="responseButtons">
+        <button id="OkayButton"
+          class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-2xl font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition"
+          aria-label="Okay button">
+          Okay
+        </button>
+        <button id="noButton"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-2xl font-medium transition disabled:pointer-events-none disabled:opacity-50 hover:bg-red-700 h-12 min-w-[75px] px-4 py-2 bg-red-500 text-white"
+          aria-label="No button">
+          No
+        </button>
+      </div>
+      <!-- Added GIF Image -->
+      <img id="gifImage" src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Cute Love Bear with Roses">
+    </div>
+  </div>
+
+  <script type="module">
+    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+    
+    const okayButton = document.getElementById('OkayButton');
+    const noButton = document.getElementById('noButton');
+    const valentineQuestion = document.getElementById('valentineQuestion');
+    const responseButtons = document.getElementById('responseButtons');
+    const gifImage = document.getElementById('gifImage');
+  
+    let noClickCount = 0;
+    let buttonHeight = 48; // Starting height in pixels
+    let buttonWidth = 80;
+    let fontSize = 20; // Starting font size in pixels
+    let isFinalNo = false; // Flag to check if the final "No :(" is displayed
+  
+    const noButtonTexts = [
+      "No", "Are you sure?", "Serious ah va?", "Think again!",
+      "Enakku vera yaru irukanga!", "please", "Ego va ahhh",
+      "Please purinjiko!", "Adingu", "You're breaking my heart :(",
+      "Pookie please", "Don't do this to me :(", "pretty please",
+      "i am going to die", "yup im dead", "un vettuku vanthuduvan",
+      "I'm gonna cry...", "No :("
+    ];
+  
+    noButton.addEventListener('click', function() {
+      if (!isFinalNo) {
+        if (noClickCount < noButtonTexts.length - 1) {
+          noClickCount++;
+          buttonHeight += 15; // Increase height by 15px on each click
+          buttonWidth += 15;  // Increase width by 15px on each click
+          fontSize += 5;      // Increase font size by 5px on each click
+          okayButton.style.height = `${buttonHeight}px`; // Update button height
+          okayButton.style.width = `${buttonWidth}px`;   // Update button width
+          okayButton.style.fontSize = `${fontSize}px`;   // Update font size
+          
+          // Update the text content of the "No" button with the current option
+          noButton.textContent = noButtonTexts[noClickCount];
+        } else {
+          noButton.textContent = "No :("; // Display "No :(" after all options
+          isFinalNo = true; // Set flag to true to indicate final state
+        }
+      }
+    });
+  
+    okayButton.addEventListener('click', () => {
+      valentineQuestion.textContent = "ok Yayyy!! :3"; // Change the question text
+      responseButtons.style.display = 'none'; // Hide both buttons
+      gifImage.style.display = 'block'; // Show the GIF
+      confetti(); // Trigger confetti animation
+    });
+  </script>  
+</body>
+</html>
