@@ -23,7 +23,7 @@ This website allows you to ask the big question, "I'm sorry for not being able t
 
 1. Clone the repository:
    ```bash
-   https://github.com/rain-old/Sorry.git
+   https://github.com/notharly/Sorry.git
    ```
 3. Open ```index.html``` in your browser to view the website.
 
@@ -44,6 +44,6 @@ Feel the love? Contributions are welcome! Whether it's a new GIF suggestion, des
 
 This project is open source and available under [MIT License](LICENSE).
 
-Here the link  https://rain-old.github.io/sorry/
+Here the link  https://notharly.github.io/sorry/
 
 Let's spread the love ❤️.
