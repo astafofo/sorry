@@ -44,6 +44,6 @@ Feel the love? Contributions are welcome! Whether it's a new GIF suggestion, des
 
 This project is open source and available under [MIT License](LICENSE).
 
-Here the link  https://rain-old.github.io/sorry/
+Here the link  https://astafofo.github.io/sorry/
 
 Let's spread the love ❤️.
