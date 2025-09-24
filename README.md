@@ -23,7 +23,7 @@ This website allows you to ask the big question, "I'm sorry for not being able t
 
 1. Clone the repository:
    ```bash
-   https://github.com/notharly/Sorry.git
+   https://github.com/astafofo/sorry.git
    ```
 3. Open ```index.html``` in your browser to view the website.
 
